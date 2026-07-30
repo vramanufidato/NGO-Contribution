@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CFS Systems Model – Complete Visual Framework</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #fafafa;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        }
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            border-bottom: 4px solid #e94560;
+            padding-bottom: 16px;
+            margin-bottom: 8px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+        .disclaimer {
+            background: #fef3f2;
+            border-left: 6px solid #e94560;
+            padding: 18px 22px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #4a1a1a;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        .section {
+            margin-bottom: 48px;
+        }
+        .section h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #16213e;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section h2 .badge {
+            background: #e94560;
+            color: white;
+            font-size: 0.8rem;
+            border-radius: 40px;
+            padding: 2px 14px;
+            font-weight: 500;
+        }
+        .mermaid-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 24px 16px;
+            margin-bottom: 24px;
+            border: 1px solid #e2e8f0;
+            overflow-x: auto;
+        }
+        .mermaid-box .caption {
+            text-align: center;
+            font-weight: 500;
+            color: #334155;
+            margin-top: 12px;
+            font-size: 0.95rem;
+        }
+        .print-hint {
+            background: #e6f0fa;
+            padding: 14px 20px;
+            border-radius: 8px;
+            border: 1px dashed #3b82f6;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+        .print-hint code {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        .print-hint .btn {
+            background: #1e293b;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .print-hint .btn:hover {
+            background: #0f172a;
+        }
+        .ref-list {
+            background: #f1f5f9;
+            padding: 20px 24px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            line-height: 1.8;
+        }
+        .ref-list li {
+            margin-bottom: 6px;
+        }
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 14px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                padding: 30px 20px;
+            }
+            .print-hint {
+                display: none;
+            }
+            .section {
+                page-break-inside: avoid;
+            }
+            .mermaid-box {
+                border: 1px solid #ccc;
+                background: #fafafa;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- PRINT HINT -->
+        <div class="print-hint">
+            <span>
+                📄 <strong>Ready to save as PDF:</strong> Press
+                <code>Ctrl + P</code> (Windows) or <code>Cmd + P</code> (Mac)
+                and select <strong>"Save as PDF"</strong>
+            </span>
+            <button class="btn" onclick="window.print()">🖨️ Print / PDF</button>
+        </div>
+
+        <!-- HEADER -->
+        <h1>🧠 The CFS Systems Model</h1>
+        <div class="subtitle">
+            A complete visual framework — from root causes to recovery
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div class="disclaimer">
+            <strong>⚠️ Disclaimer:</strong> This document is for informational and educational purposes only.
+            It does not constitute medical advice, diagnosis, or treatment. Always consult qualified healthcare
+            providers before making any changes to your diet, medications, supplements, or lifestyle.
+            <br /><br />
+            The author assumes no responsibility for any adverse effects arising from the use or application of
+            the information presented here.
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 1: COMPLETE SYSTEMS MODEL -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>1. Complete Systems Model</span> <span class="badge">Overview</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    graph TD
+                        A["GENETIC PREDISPOSITION"] --> B["GUT DYSFUNCTION"]
+                        B --> C["Intestinal Permeability<br>'Leaky Gut'"]
+                        B --> D["Microbiome Dysbiosis"]
+                        B --> E["Undiagnosed Infections<br>Parasites, SIBO"]
+                        B --> F["Food Sensitivities"]
+                        C --> G["Microbial Translocation<br>LPS enters bloodstream"]
+                        D --> G
+                        E --> G
+                        F --> G
+                        G --> H["CHRONIC SYSTEMIC INFLAMMATION"]
+                        I["CHRONIC STRESS"] --> J["HPA Axis Dysregulation"]
+                        J --> H
+                        K["POOR SLEEP"] --> L["Reduced Glymphatic Clearance"]
+                        L --> M["Neuroinflammation"]
+                        H --> M
+                        N["MEDICATION SIDE EFFECTS"] --> O["Increased Fatigue Burden"]
+                        O --> P["METABOLIC DYSFUNCTION"]
+                        Q["INSULIN RESISTANCE / DIABETES"] --> R["Mitochondrial Dysfunction"]
+                        R --> P
+                        M --> S["BRAIN FOG &amp; COGNITIVE IMPAIRMENT"]
+                        P --> T["ENERGY DEPLETION"]
+                        H --> T
+                        S --> U["FATIGUE - FINAL COMMON PATHWAY"]
+                        T --> U
+                        U --> V["CRASH"]
+                        style A fill:#f9f,stroke:#333
+                        style B fill:#bbf,stroke:#333
+                        style H fill:#f96,stroke:#333
+                        style M fill:#f96,stroke:#333
+                        style P fill:#f96,stroke:#333
+                        style U fill:#ff6,stroke:#333
+                        style V fill:#f66,stroke:#333
+                </div>
+                <div class="caption">All interconnected factors leading to chronic fatigue and crashes</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 2: POST-INFECTIOUS CASCADE -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>2. Post-Infectious Cascade</span> <span class="badge">Mechanism</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    flowchart TD
+                        A["ASYMPTOMATIC OR MILD INFECTION<br>Parasite, Virus, or Bacteria"] --> B["Immune System Activation"]
+                        B --> C["Inflammatory Cytokines Released<br>IL-6, TNF-alpha, IFN-gamma"]
+                        C --> D["Gut Barrier Disruption<br>Increased Intestinal Permeability"]
+                        D --> E["Microbial Translocation<br>LPS and Endotoxins Enter Bloodstream"]
+                        E --> F["SUSTAINED SYSTEMIC INFLAMMATION"]
+                        F --> G["Microglia Primed in Brain"]
+                        G --> H["Neuroinflammation"]
+                        F --> I["Mitochondrial Dysfunction"]
+                        I --> J["Energy Depletion"]
+                        H --> K["Brain Fog, Mood Changes"]
+                        J --> L["Physical Fatigue"]
+                        K --> M["CRASH"]
+                        L --> M
+                        style A fill:#bbf,stroke:#333
+                        style D fill:#f96,stroke:#333
+                        style F fill:#f66,stroke:#333
+                        style M fill:#f00,stroke:#333,color:#fff
+                </div>
+                <div class="caption">How a mild infection triggers a cascade leading to chronic symptoms</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 3: 3-MONTH CRASH TIMELINE -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>3. The 3-Month Crash Timeline</span> <span class="badge">Pattern</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    timeline
+                        title The 3-Month Crash Timeline
+                        6-12 Months Ago : Possible Infection
+                                      : Asymptomatic or Mild
+                                      : Parasite / Virus / Bacteria
+                        3 Months Ago : "Better Period"
+                                    : Body Compensating
+                                    : Immune System Managing
+                        Recent Weeks : Cumulative Load Exceeds Capacity
+                                    : Gut Permeability Worsens
+                                    : Inflammation Increases
+                        NOW : CRASH
+                            : Fatigue, Brain Fog
+                            : Gut Dysfunction
+                            : Neuroinflammation
+                            : Mitochondrial Dysfunction
+                        Recovery Path : Reduce Burden
+                                      : Treat Infections
+                                      : Repair Gut
+                                      : Regulate Nervous System
+                                      : Protect Sleep
+                </div>
+                <div class="caption">The pattern of feeling better followed by a sudden crash</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 4: STRESS-FATIGUE CYCLE -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>4. Stress-Fatigue Vicious Cycle</span> <span class="badge">Neurobiology</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    graph LR
+                        A["CHRONIC STRESS"] --> B["HPA Axis Activation"]
+                        B --> C["Cortisol Release"]
+                        C --> D["Glucocorticoid Resistance"]
+                        D --> E["Inflammation Pathways Activated<br>NF-κB, AP-1, JAK-STAT"]
+                        E --> F["Proinflammatory Cytokines<br>IL-6, TNF-alpha"]
+                        F --> G["NEUROINFLAMMATION"]
+                        G --> H["FATIGUE"]
+                        H --> I["Reduced Stress Resilience"]
+                        I --> A
+                        style A fill:#f96,stroke:#333
+                        style G fill:#f66,stroke:#333
+                        style H fill:#f00,stroke:#333,color:#fff
+                </div>
+                <div class="caption">How chronic stress and fatigue reinforce each other</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 5: GUT-BRAIN-IMMUNE AXIS -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>5. Gut-Brain-Immune Axis</span> <span class="badge">Central Hub</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    graph TD
+                        subgraph GUT["GUT"]
+                            A["Microbiome"] --> B["SCFA Production"]
+                            A --> C["Neurotransmitters<br>Serotonin, GABA, Dopamine"]
+                            A --> D["Immune Regulation"]
+                            E["Intestinal Barrier"] --> F["Permeability Control"]
+                        end
+                        subgraph BLOODSTREAM["BLOODSTREAM"]
+                            G["Microbial Products<br>LPS, Toxins"]
+                            H["Inflammatory Cytokines"]
+                            I["Nutrients &amp; Metabolites"]
+                        end
+                        subgraph BRAIN["BRAIN"]
+                            J["Microglia Activation"]
+                            K["Neuroinflammation"]
+                            L["Neurotransmitter Balance"]
+                            M["HPA Axis Regulation"]
+                        end
+                        subgraph IMMUNE_SYSTEM["IMMUNE SYSTEM"]
+                            N["T Cell Activation"]
+                            O["B Cell Response"]
+                            P["Natural Killer Cells"]
+                        end
+                        A --> G
+                        E --> G
+                        G --> H
+                        H --> J
+                        J --> K
+                        C --> L
+                        M --> B
+                        D --> N
+                        D --> O
+                        D --> P
+                        style GUT fill:#bbf,stroke:#333
+                        style BRAIN fill:#f96,stroke:#333
+                        style IMMUNE_SYSTEM fill:#9f9,stroke:#333
+                </div>
+                <div class="caption">The central connection between all major systems</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 6: PARASITE INFECTION ROUTES -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>6. Parasite Infection Routes</span> <span class="badge">Exposure</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    graph TD
+                        A["PARASITE INFECTION SOURCES"] --> B["Soil-Transmitted"]
+                        A --> C["Water-Transmitted"]
+                        A --> D["Food-Transmitted"]
+                        A --> E["Animal/Pet Contact"]
+                        B --> B1["Roundworm - Skin Contact"]
+                        B --> B2["Hookworm - Barefoot Walking"]
+                        B --> B3["Whipworm - Hand to Mouth"]
+                        C --> C1["Giardia - Contaminated Water"]
+                        C --> C2["Cryptosporidium - Swimming"]
+                        C --> C3["Fasciola - Aquatic Plants"]
+                        D --> D1["Taenia - Undercooked Pork"]
+                        D --> D2["Fish Flukes - Raw Fish"]
+                        D --> D3["Sarcocystis - Contaminated Meat"]
+                        E --> E1["Pets - Hookworm Larvae"]
+                        E --> E2["Farm Animals - Zoonotic"]
+                        B1 --> F["IMMUNE SYSTEM MANIPULATION"]
+                        B2 --> F
+                        B3 --> F
+                        C1 --> F
+                        C2 --> F
+                        C3 --> F
+                        D1 --> F
+                        D2 --> F
+                        D3 --> F
+                        E1 --> F
+                        E2 --> F
+                        F --> G["Chronic Inflammation"]
+                        F --> H["Nutrient Depletion"]
+                        F --> I["Immune Dysregulation"]
+                        G --> J["FATIGUE"]
+                        H --> J
+                        I --> J
+                        style A fill:#f9f,stroke:#333
+                        style F fill:#f96,stroke:#333
+                        style J fill:#f00,stroke:#333,color:#fff
+                </div>
+                <div class="caption">How parasites enter the body despite hygiene and cooking</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 7: RECOVERY STRATEGY -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>7. Recovery Strategy</span> <span class="badge">7 Pillars</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    graph TD
+                        A["RECOVERY STRATEGY"] --> B["Fix the Gut"]
+                        A --> C["Reduce Inflammation"]
+                        A --> D["Regulate Nervous System"]
+                        A --> E["Support Mitochondrial Energy"]
+                        A --> F["Eliminate Burdens"]
+                        A --> G["Protect Sleep"]
+                        A --> H["Manage Stress &amp; Burnout"]
+                        B --> B1["Stool Testing"]
+                        B --> B2["Elimination Diet"]
+                        B --> B3["Probiotics/Prebiotics"]
+                        B --> B4["Glutamine, Zinc, Butyrate"]
+                        C --> C1["Anti-inflammatory Diet"]
+                        C --> C2["Omega-3, Curcumin"]
+                        C --> C3["Reduce Sugar &amp; Processed Foods"]
+                        D --> D1["Breathwork"]
+                        D --> D2["Meditation"]
+                        D --> D3["Vagal Toning"]
+                        D --> D4["Grounding"]
+                        E --> E1["Pacing - Stay in Energy Envelope"]
+                        E --> E2["Nutrient-Dense Foods"]
+                        E --> E3["CoQ10, Magnesium, B Vitamins"]
+                        F --> F1["Medication Review"]
+                        F --> F2["Toxin Reduction"]
+                        F --> F3["Digital Detox"]
+                        G --> G1["Same Bedtime"]
+                        G --> G2["Dark Room, No Screens"]
+                        G --> G3["Magnesium Before Bed"]
+                        H --> H1["Daily Intentional Practice"]
+                        H --> H2["Setting Boundaries"]
+                        H --> H3["Social Connection"]
+                        style A fill:#9f9,stroke:#333
+                        style B fill:#bbf,stroke:#333
+                        style C fill:#bbf,stroke:#333
+                        style D fill:#bbf,stroke:#333
+                        style E fill:#bbf,stroke:#333
+                        style F fill:#bbf,stroke:#333
+                        style G fill:#bbf,stroke:#333
+                        style H fill:#bbf,stroke:#333
+                </div>
+                <div class="caption">Seven pillars of the recovery framework</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 8: MEDICATION BURDEN -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>8. Medication Burden</span> <span class="badge">Additive Load</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    graph TD
+                        A["MEDICATION CLASSES"] --> B["Antidepressants<br>SSRIs, SNRIs"]
+                        A --> C["Antihistamines"]
+                        A --> D["Blood Pressure Meds<br>Beta-blockers, Diuretics"]
+                        A --> E["Statins"]
+                        A --> F["Steroids"]
+                        A --> G["Pain Medications"]
+                        A --> H["PPIs - Acid Reducers"]
+                        B --> I["FATIGUE AS SIDE EFFECT"]
+                        C --> I
+                        D --> I
+                        E --> I
+                        F --> I
+                        G --> I
+                        H --> I
+                        I --> J["ADDITIVE BURDEN HYPOTHESIS"]
+                        K["Baseline Fatigue"] --> J
+                        L["Gut Issues"] --> J
+                        M["Chronic Stress"] --> J
+                        N["Poor Sleep"] --> J
+                        O["Dietary Triggers"] --> J
+                        J --> P["CRASH"]
+                        style A fill:#f9f,stroke:#333
+                        style I fill:#f96,stroke:#333
+                        style J fill:#f66,stroke:#333
+                        style P fill:#f00,stroke:#333,color:#fff
+                </div>
+                <div class="caption">How medications can tip manageable fatigue into a crash</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 9: DAILY GUT PROTOCOL -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>9. Daily Gut Protocol Framework</span> <span class="badge">7-Day Plan</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    gantt
+                        title 7-Day Gut-Support Protocol – Daily Framework
+                        dateFormat HH:mm
+                        axisFormat %H:%M
+                        section MORNING
+                        Wake &amp; Hydrate (warm water + salt) :a1, 06:00, 10m
+                        Diaphragmatic Breathing :a2, after a1, 10m
+                        Gentle Movement (if able) :a3, after a2, 5m
+                        Breakfast (no sugar, no dairy, no gluten) :a4, after a3, 20m
+                        section MID-MORNING
+                        Hydrate (electrolytes) :b1, 09:00, 30m
+                        Herbal Tea (optional) :b2, 10:00, 15m
+                        section LUNCH
+                        Cooked Vegetables + Protein :c1, 12:30, 30m
+                        Fermented Food (small portion) :c2, 13:00, 15m
+                        section AFTERNOON
+                        Hydrate (electrolytes) :d1, 15:00, 30m
+                        Rest (no screens) :d2, 16:00, 20m
+                        section EVENING
+                        Light Dinner (soup/stew) :e1, 18:00, 30m
+                        Herbal Tea :e2, 19:00, 15m
+                        Magnesium (if approved) :e3, 20:00, 5m
+                        No Screens :e4, 21:00, 60m
+                        Bedtime :milestone, e5, 22:00, 0m
+                </div>
+                <div class="caption">Daily schedule for the 7-day gut-support protocol</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 10: DAILY TRACKING LOG -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>10. Daily Tracking Log</span> <span class="badge">Self-Monitoring</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    graph TD
+                        A["DAILY TRACKING LOG"] --> B["ENERGY SCORES"]
+                        A --> C["SLEEP QUALITY"]
+                        A --> D["DIGESTION"]
+                        A --> E["BRAIN FOG &amp; MOOD"]
+                        A --> F["FOOD LOG"]
+                        A --> G["NOTES"]
+                        B --> B1["Morning Energy 1-10"]
+                        B --> B2["Afternoon Energy 1-10"]
+                        B --> B3["Evening Energy 1-10"]
+                        C --> C1["Quality 1-10"]
+                        C --> C2["Hours Slept"]
+                        D --> D1["Bloating Yes/No"]
+                        D --> D2["Gas Yes/No"]
+                        D --> D3["BM Quality 1-5"]
+                        E --> E1["Brain Fog 1-10"]
+                        E --> E2["Mood 1-10"]
+                        F --> F1["Breakfast"]
+                        F --> F2["Lunch"]
+                        F --> F3["Dinner"]
+                        F --> F4["Snacks"]
+                        G --> G1["Feelings"]
+                        G --> G2["Symptoms"]
+                        G --> G3["Observations"]
+                        style A fill:#9f9,stroke:#333
+                        style G fill:#bbf,stroke:#333
+                </div>
+                <div class="caption">What to track daily to identify patterns</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- DIAGRAM 11: KEY FRAMEWORKS SUMMARY -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>11. Key Frameworks Summary</span> <span class="badge">At a Glance</span></h2>
+            <div class="mermaid-box">
+                <div class="mermaid">
+                    graph TD
+                        subgraph DIAGNOSIS_PROBLEM["DIAGNOSIS PROBLEM"]
+                            A["80% CFS Misdiagnosed<br>as Depression"] --> B["Doctors Stop at<br>Easiest Answer"]
+                            B --> C["Patient Invalidated"]
+                            C --> D["Gaslighting"]
+                            D --> E["Delayed Diagnosis"]
+                        end
+                        subgraph SYSTEMS_THINKING["SYSTEMS THINKING"]
+                            F["Gut Dysfunction"] --> G["Immune Activation"]
+                            G --> H["Neuroinflammation"]
+                            H --> I["Mitochondrial Dysfunction"]
+                            I --> J["FATIGUE"]
+                        end
+                        subgraph ACCOUNTABILITY["ACCOUNTABILITY"]
+                            K["Leadership Lesson"] --> L["Accountability = Learning, Not Punishment"]
+                            K --> M["Drop Ego, See for Yourself"]
+                            K --> N["Low Hierarchy = High Influence"]
+                        end
+                        subgraph RECOVERY["RECOVERY"]
+                            O["7-DAY PROTOCOL"] --> P["Elimination"]
+                            O --> Q["Anti-inflammatory"]
+                            O --> R["Gut Repair"]
+                            O --> S["Fermented Foods"]
+                            O --> T["Prebiotics"]
+                            O --> U["Hydration"]
+                            O --> V["Reflection"]
+                        end
+                        style DIAGNOSIS_PROBLEM fill:#f66,stroke:#333
+                        style SYSTEMS_THINKING fill:#bbf,stroke:#333
+                        style ACCOUNTABILITY fill:#9f9,stroke:#333
+                        style RECOVERY fill:#ff6,stroke:#333
+                </div>
+                <div class="caption">All major insights condensed into one view</div>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- REFERENCES -->
+        <!-- ============================================================ -->
+        <div class="section">
+            <h2><span>📚 References</span></h2>
+            <div class="ref-list">
+                <ol>
+                    <li>Hsu, C.Y., et al. (2025). The potential therapeutic approaches targeting gut health in myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS): a narrative review. <em>Journal of Translational Medicine</em>, 23(1), 530.</li>
+                    <li>Seton, K.A., et al. (2025). Profiling Antibody Reactivity to Gut Microbes in ME/CFS Patients. <em>Methods in Molecular Biology</em>.</li>
+                    <li>Trautmann, A. (2021). Mécanismes sous-jacents à la fatigue chronique, un symptôme trop souvent négligé : II. De l'immunité dérégulée à la neuroinflammation et ses conséquences. <em>Med Sci (Paris)</em>, 37(11), 1047-1054.</li>
+                    <li>Ostojic, S. (2020). <em>Clinical Bioenergetics: From Pathophysiology to Clinical Translation</em>. Academic Press.</li>
+                    <li>Hanevik, K., et al. (2017). Giardia-specific cellular immune responses in post-giardiasis chronic fatigue syndrome. <em>BMC Immunology</em>, 18, 5.</li>
+                    <li>Watai, K., Taniguchi, M., &amp; Azuma, K. (2025). The Gut-Brain-Immune Axis in Environmental Sensitivity Illnesses: Microbiome-Centered Narrative Review.</li>
+                    <li>Stallmach, A., Quickert, S., Puta, C., &amp; Reuken, P.A. (2024). The gastrointestinal microbiota in the development of ME/CFS: a critical view and potential perspectives. <em>Frontiers in Immunology</em>, 15, 1352744.</li>
+                    <li>Comhaire, F., &amp; Deslypere, J.P. (2020). News and views in myalgic encephalomyelitis/chronic fatigue syndrome (ME/CFS): The role of co-morbidity and novel treatments. <em>Medical Hypotheses</em>, 134, 109444.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- FOOTER -->
+        <!-- ============================================================ -->
+        <div class="footer">
+            <p>
+                <strong>🧭 Keep fighting. Keep tracking. Keep hoping.</strong><br />
+                Your energy will find its way back.
+            </p>
+            <p style="margin-top: 8px; font-size: 0.8rem;">
+                Created from a decade of lived experience, research, and systems thinking.<br />
+                This document is free to share — please include the disclaimer.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Mermaid JS -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js">
+    </script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                background: '#ffffff',
+                primaryColor: '#e94560',
+                primaryTextColor: '#1a1a2e',
+                primaryBorderColor: '#333',
+                lineColor: '#4a4a6a',
+                secondaryColor: '#f8fafc',
+                tertiaryColor: '#f1f5f9',
+                fontSize: '14px',
+                fontFamily: 'Segoe UI, system-ui, sans-serif'
+            },
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            },
+            timeline: {
+                useMaxWidth: true
+            },
+            gantt: {
+                useMaxWidth: true
+            }
+        });
+    </script>
+
+</body>
+</html>
